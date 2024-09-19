@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 public class TileManager {
     GamePanel gp;
     Tile[] tile;
-    int mapTileNum[][];
+    int[][] mapTileNum;
 
     public TileManager(GamePanel gp){
         this.gp = gp;
@@ -43,18 +43,19 @@ public class TileManager {
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             int col = 0;
             int row =0;
-            while(col<gp.maxScreenCol && row<gp.maxScreenRow){
+            while(col< gp.maxScreenCol && row< gp.maxScreenRow){
                 String line = br.readLine();
                 while(col<gp.maxScreenCol){
-                    String numbers[] = line.split(" ");
+                    String[] numbers = line.split(" ");
                     int num = Integer.parseInt(numbers[col]);
                     mapTileNum[col][row] = num;
                     col++;
                 }
-                if(col==gp.maxScreenCol){
+                if (col==gp.maxScreenCol){
                     col = 0;
                     row++;
                 }
+
             }
             br.close();
         }catch (Exception e){
