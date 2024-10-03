@@ -13,7 +13,7 @@ public class Player extends Entity{
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
-    int hasKey = 0;
+    public int hasKey = 0;
 
     public Player(GamePanel gp,KeyHandler keyH){
         this.gp = gp;
@@ -106,21 +106,27 @@ public class Player extends Entity{
                     gp.playSE(1);
                     hasKey++;
                     gp.obj[index] = null;
-                    System.out.println("key: " + hasKey);
-
+                    gp.ui.showMessage("You Got "+ hasKey+ " Key!!");
                     break;
                 case "Door":
                     if(hasKey>0){
                         gp.playSE(3);
                         gp.obj[index] =null;
                         hasKey--;
-                        System.out.println("key: " + hasKey);
+                        gp.ui.showMessage("Door Opened!! "+ hasKey + " key left");
+                        if(hasKey==0){
+                            gp.ui.showMessage("All Door Opened!! hurray!!");
+                        }
                     }
+                    else
+                        gp.ui.showMessage("You Need a Key!!");
+
                     break;
                 case "Boots":
                     gp.playSE(2);
                     speed+=2;
                     gp.obj[index]=null;
+                    gp.ui.showMessage("Speed Up!! ");
             }
         }
 
