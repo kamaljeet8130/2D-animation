@@ -114,19 +114,24 @@ public class Player extends Entity{
                         gp.obj[index] =null;
                         hasKey--;
                         gp.ui.showMessage("Door Opened!! "+ hasKey + " key left");
-                        if(hasKey==0){
-                            gp.ui.showMessage("All Door Opened!! hurray!!");
-                        }
                     }
                     else
                         gp.ui.showMessage("You Need a Key!!");
-
                     break;
                 case "Boots":
                     gp.playSE(2);
                     speed+=2;
                     gp.obj[index]=null;
-                    gp.ui.showMessage("Speed Up!! ");
+                    gp.ui.showMessage("Speed Upf!! ");
+                    break;
+                case "Chest":
+                    gp.ui.gameFinished = true;
+                    gp.stopMusic();
+                    gp.playSE(4);
+                    break;
+
+
+
             }
         }
 
